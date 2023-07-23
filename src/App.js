@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Tariff from "./components/tariff";
+import tariffs from "./data/tariffs.json";
+import "./styles/App.scss";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="App-title">Наши мобильные тарифы</h1>
+      <div className="App-container">
+        {tariffs.map((tariff) => (
+          <Tariff
+            name={tariff.name}
+            price={tariff.price}
+            speed={tariff.speed}
+            traffic={tariff.traffic}
+            blueColor={tariff.blueColor}
+            greenColor={tariff.greenColor}
+            redColor={tariff.redColor}
+            blackColor={tariff.blackColor}
+            isSelected={tariff.isSelected}
+            key={tariff.name}
+          />
+        ))}
+      </div>
     </div>
   );
 }

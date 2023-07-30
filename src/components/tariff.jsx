@@ -1,9 +1,17 @@
+import React, { useState } from "react";
 import "../styles/tariff.scss";
 
 export default function Tariff(props) {
+  const [click, setClick] = useState(false);
+  const handleClick = () => {
+    setClick(!click);
+  };
   return (
     <div
-      className={"tariff-container " + (props.isSelected ? "selected" : "")}
+      onClick={handleClick}
+      className={
+        click ? "tariff-container" : "selected"
+      } /* + (props.isSelected ? "selected" : "") */
       key={props.index}
     >
       <div

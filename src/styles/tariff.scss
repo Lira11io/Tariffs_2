@@ -1,8 +1,8 @@
 .tariff-container {
   border: 3px solid white;
   width: 250px;
-  opacity: 0.5;
-  transition: opacity 3s ease-in-out;
+  transition: 0.9s;
+  cursor: pointer;
 }
 
 .tariff-name {
@@ -43,7 +43,7 @@
 }
 
 .greenColor {
-  background-color: rgb(64, 241, 203);
+  background-color: rgb(64, 241, 153);
 }
 
 .redColor {
@@ -54,7 +54,9 @@
   background-color: rgb(18, 53, 61);
 }
 
+/*Измененный класс при клике на тариф*/
 .selected {
+  transition: 0.9s;
   width: 270px;
-  opacity: 2;
+  transform: scale(1.1);
 }

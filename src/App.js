@@ -1,23 +1,23 @@
+import React, { useState } from "react";
 import Tariff from "./components/tariff";
 import tariffs from "./data/tariffs.json";
 import "./styles/App.scss";
 
 function App() {
+  const [selectedTariff, setSelectedTariff] = useState(null);
+  const handleTariffSelect = (tarifName) => {
+    setSelectedTariff(tarifName);
+  };
+
   return (
     <div className="App">
       <h1 className="App-title">Наши мобильные тарифы</h1>
       <div className="App-container">
         {tariffs.map((tariff) => (
           <Tariff
-            name={tariff.name}
-            price={tariff.price}
-            speed={tariff.speed}
-            traffic={tariff.traffic}
-            blueColor={tariff.blueColor}
-            greenColor={tariff.greenColor}
-            redColor={tariff.redColor}
-            blackColor={tariff.blackColor}
-            isSelected={tariff.isSelected}
+            {...tariff}
+            isSelected={tariff.name === selectedTariff}
+            onTariffClick={handleTariffSelect}
             key={tariff.name}
           />
         ))}

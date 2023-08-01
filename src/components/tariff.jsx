@@ -1,28 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/tariff.scss";
 
 export default function Tariff(props) {
-  const [click, setClick] = useState(false);
+  //const [click, setClick] = useState(false);
   const handleClick = () => {
-    setClick(!click);
+    props.onTariffClick(props.name);
   };
+  const tariffClasses = `tariff-blok ${props.blueColor ? "blueColor" : ""} ${
+    props.greenColor ? "greenColor" : ""
+  } ${props.redColor ? "redColor" : ""} ${
+    props.blackColor ? "blackColor" : ""
+  }`;
+
   return (
     <div
       onClick={handleClick}
-      className={
-        click ? "tariff-container" : "selected"
-      } /* + (props.isSelected ? "selected" : "") */
+      className={props.isSelected ? "selected" : "tariff-container"}
       key={props.index}
     >
-      <div
-        className={
-          "tariff-blok " +
-          (props.blueColor ? "blueColor" : "") +
-          (props.greenColor ? "greenColor" : "") +
-          (props.redColor ? "redColor" : "") +
-          (props.blackColor ? "blackColor" : "")
-        }
-      >
+      <div className={tariffClasses}>
         <div className="tariff-name">{props.name}</div>
         <div className="tariff-price">
           <span className="tariff-price-item">{props.price}</span> руб/мес
